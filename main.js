@@ -16,11 +16,7 @@ p1Btn.addEventListener('click',function(){
    
     if(!gameOver){
         p1Score++;
-        if(p1Score === winingScore){
-            gameOver = true;
-            // p1Btn.setAttribute('disabled','disabled');
-            // p2Btn.setAttribute('disabled','disabled');
-        }
+        winner(p1Score,winingScore)
     }
     p1ScoreDisplay.innerText = p1Score; 
 })
@@ -28,12 +24,26 @@ p1Btn.addEventListener('click',function(){
 p2Btn.addEventListener('click',function(){
     if(!gameOver){
         p2Score++;
-    if(p2Score === winingScore){
-        gameOver = true
-        // p1Btn.setAttribute('disabled','disabled');
-        // p2Btn.setAttribute('disabled','disabled');
-    }
+     winner(p2Score,winingScore)
     }
     p2ScoreDispaly.innerText = p2Score; 
+})
+
+function winner(oldScore,winningScore){
+    if(oldScore === winningScore){
+        gameOver = true
+         p1Btn.setAttribute('disabled','disabled');
+         p2Btn.setAttribute('disabled','disabled');
+    }
+}
+
+resetBtn.addEventListener('click',function(){
+    p1Score = 0;
+    p2Score = 0;
+    gameOver = false;
+    p1ScoreDisplay.innerText =0;
+    p2ScoreDispaly.innerText = 0;
+    p1Btn.removeAttribute('disabled');
+    p2Btn.removeAttribute('disabled');
 })
 
